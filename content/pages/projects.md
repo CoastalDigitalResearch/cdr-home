@@ -100,10 +100,3 @@ Repository: github.com/CoastalDigitalResearch/CDRdistill
 
 ---
 
-## Archived
-
-### CDRmix
-
-An open, streaming-capable Mixture-of-Experts (MoE) architecture built on RWKV-style blocks, designed for long-context reasoning with modular expert routing. Retired in favor of a new model architecture we're releasing soon. The codebase is still up for reference, but development moved elsewhere.
-
-Repository: github.com/CoastalDigitalResearch/CDRmix
