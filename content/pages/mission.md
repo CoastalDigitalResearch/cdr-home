@@ -8,11 +8,11 @@ tags: [mission, values, vision]
 
 We build open-source infrastructure for AI agents. Tools, runtimes, protocols. The stuff that runs underneath the model.
 
-This is where most of the interesting work is right now. Agents need to read files, run commands, cache results, remember things between sessions, and stay within scope. Each of those is a real engineering problem with real consequences when it goes wrong. We'd rather get those right than ship another model wrapper.
+This is where most of the interesting work is right now. Agents need to read files, run commands, cache results, remember things between sessions, and stay within scope. Each one is an engineering problem with consequences when it goes wrong. We'd rather get those right than ship another model wrapper.
 
 ## Vision
 
-Agents deployed with the same care we apply to databases. Observed like production services. Governed like software that touches real money. Most agent infrastructure today is closer to a demo than a system. We want to fix that.
+Agents deployed with the same care we apply to databases. We should be able to audit what they did and roll back when something breaks. Most agent infrastructure today is closer to a demo than a system. We want to fix that.
 
 ## Values
 
@@ -26,4 +26,4 @@ Agents deployed with the same care we apply to databases. Observed like producti
 
 ## What We Don't Do
 
-We don't train foundation models. We don't sell hosted inference. We work on the layer above. The runtime, the memory, the tooling, and the protocols that let models do useful work without breaking things.
+We don't train foundation models. We don't sell hosted inference. We work on the layer above. The runtime and the protocols that let models do useful work without breaking things.

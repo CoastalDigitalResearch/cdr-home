@@ -6,7 +6,7 @@ tags: [workflows, operations, process]
 
 ## How CDR Works
 
-Small, asynchronous, mostly code-based. Almost no meetings. Communication happens in repos and in the agent task logs.
+Small and asynchronous. Most work happens in code and in the agent task logs, not in meetings.
 
 ## Development Workflow
 

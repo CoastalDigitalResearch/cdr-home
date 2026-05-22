@@ -6,7 +6,7 @@ tags: [policy, governance, open-source, data]
 
 ## Open Source Policy
 
-All CDR software is Apache License 2.0 unless explicitly noted. We picked Apache 2.0 because it's permissive (commercial use is fine), requires attribution, and includes an explicit patent grant.
+All CDR software is Apache License 2.0 unless explicitly noted. The license allows commercial use, requires attribution, and includes a patent grant. We chose it for all three.
 
 Contributors keep copyright on what they wrote. Opening a pull request means you're agreeing your work can be distributed under the project's license.
 

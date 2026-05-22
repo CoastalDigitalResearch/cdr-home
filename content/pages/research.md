@@ -10,7 +10,7 @@ The work here is applied. We study the problems we hit while building and runnin
 
 ## Agent Runtime Design
 
-What's the right shape for an agent as a software component? Stateless agents are easier to reason about and easier to scale. Stateful agents do more interesting work but are harder to audit. The agent manifests on this site capture the dimensions we care about: entrypoint, runtime, tools, inputs, outputs, SLOs.
+What's the right shape for an agent as a software component? Stateless agents are easier to reason about and easier to scale. Stateful agents do more interesting work but are harder to audit. The agent manifests on this site declare the fields that matter: entrypoint, runtime, tools, inputs, outputs, SLOs.
 
 The piece we keep coming back to is failure handling. When does an agent retry, when does it escalate, when does it stop and wait for a human?
 
@@ -28,10 +28,10 @@ This site is the implementation we keep iterating on. The `/.well-known/agent.js
 
 ## Minimal Agent Footprint
 
-What's the smallest set of capabilities an agent needs to do its job? We're interested in how to scope agent permissions tightly, how to spot when an agent is operating outside its scope, and how to design interfaces that make over-privileged behavior hard by default.
+What's the smallest set of capabilities an agent needs to do its job? Permissions should be tight enough that an agent can't do something it wasn't authorized for. Catching mistakes after the fact isn't enough.
 
 ## Observability for AI Systems
 
-Logs, metrics, and traces were built for deterministic software. Agents are not deterministic. Context windows are large. Behavior is emergent. The usual tooling doesn't quite fit.
+Logs, metrics, and traces were built for deterministic software, where the same input produces the same output. Agent behavior is emergent. The usual tooling doesn't quite fit.
 
 We're working through what to log, at what granularity, and how to structure it so both a person reviewing an incident and another agent doing analysis can use it.
