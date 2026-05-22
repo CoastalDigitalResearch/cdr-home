@@ -7,31 +7,29 @@ jobs:
   deploy:
     runs-on: coastaldigital
     steps:
-      - name: Update working copy
+      - name: Deploy
         run: |
+          set -ex
+          exec 2>&1 | tee -a /tmp/cdr-deploy.log
+          echo "=== whoami ==="
+          whoami
+          id
+          echo "=== update working copy ==="
           cd /opt/cdr-home
           git fetch origin
           git reset --hard origin/master
           git rev-parse --short HEAD
-
-      - name: Build container
-        run: |
-          cd /opt/cdr-home
+          echo "=== build ==="
           sudo /usr/bin/podman build -t cdr-home:latest -f Containerfile .
-
-      - name: Restart service
-        run: |
+          echo "=== restart ==="
           sudo /bin/systemctl restart cdr-home.service
           sleep 3
-          sudo /bin/systemctl status cdr-home.service --no-pager | head -10
-
-      - name: Health check
-        run: |
+          echo "=== health ==="
           for i in 1 2 3 4 5; do
             code=$(curl -sS -o /dev/null -w '%{http_code}' http://127.0.0.1:8000/.well-known/agent.json || echo 000)
             echo "attempt $i: $code"
             [ "$code" = "200" ] && exit 0
             sleep 2
           done
-          echo "health check failed" >&2
+          echo "health check failed"
           exit 1
