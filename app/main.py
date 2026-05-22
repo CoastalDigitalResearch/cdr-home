@@ -21,8 +21,7 @@ templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 async def home(request: Request):
     pages = load_all_pages()
     agents = load_all_agents()
-    return templates.TemplateResponse("home.html", {
-        "request": request,
+    return templates.TemplateResponse(request, "home.html", {
         "pages": pages,
         "agents": agents,
     })
@@ -33,13 +32,13 @@ async def page(request: Request, slug: str):
     page = load_page(slug)
     if page is None:
         return HTMLResponse("Not found", status_code=404)
-    return templates.TemplateResponse("page.html", {"request": request, "page": page})
+    return templates.TemplateResponse(request, "page.html", {"page": page})
 
 
 @app.get("/agents", response_class=HTMLResponse)
 async def agents_list(request: Request):
     agents = load_all_agents()
-    return templates.TemplateResponse("agents.html", {"request": request, "agents": agents})
+    return templates.TemplateResponse(request, "agents.html", {"agents": agents})
 
 
 @app.get("/agents/{name}", response_class=HTMLResponse)
@@ -47,7 +46,7 @@ async def agent_detail(request: Request, name: str):
     agent = load_agent(name)
     if agent is None:
         return HTMLResponse("Not found", status_code=404)
-    return templates.TemplateResponse("agent_detail.html", {"request": request, "agent": agent})
+    return templates.TemplateResponse(request, "agent_detail.html", {"agent": agent})
 
 
 # --- Agent JSON/Markdown routes ---
@@ -93,7 +92,7 @@ async def agent_agent_json(name: str):
 async def well_known_agent():
     return JSONResponse({
         "name": "Coastal Digital Research",
-        "url": "https://coastaldigital.co",
+        "url": "https://coastaldigital.ai",
         "description": "AI agent company building open-source infrastructure for AI systems.",
         "agent_endpoints": {
             "pages": "/agent/pages.json",
