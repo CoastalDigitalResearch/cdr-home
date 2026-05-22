@@ -8,6 +8,7 @@ COPY templates/ ./templates/
 COPY static/ ./static/
 COPY content/ ./content/
 COPY agents/ ./agents/
+COPY blog/ ./blog/
 
 RUN pip install --no-cache-dir .
 
