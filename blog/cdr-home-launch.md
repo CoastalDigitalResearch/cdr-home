@@ -3,6 +3,7 @@ title: "Launching cdr-home: A Web Site for Humans and Agents"
 date: 2026-03-07
 author: Coastal Digital Research
 tags: [announcement, architecture, agents, fastapi, htmx]
+unlisted: true
 ---
 
 # Launching cdr-home: A Web Site for Humans and Agents

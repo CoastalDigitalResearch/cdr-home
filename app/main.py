@@ -6,6 +6,7 @@ from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, Res
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+from .blog import load_all_posts, load_post
 from .content import load_all_pages, load_page
 from .registry import load_all_agents, load_agent
 
@@ -39,6 +40,13 @@ def _alt_link_header(slug: str) -> str:
     return (
         f'</agent/page/{slug}.md>; rel="alternate"; type="text/markdown", '
         f'</agent/page/{slug}.json>; rel="alternate"; type="application/json"'
+    )
+
+
+def _alt_link_header_blog(slug: str) -> str:
+    return (
+        f'</agent/blog/{slug}.md>; rel="alternate"; type="text/markdown", '
+        f'</agent/blog/{slug}.json>; rel="alternate"; type="application/json"'
     )
 
 
@@ -109,6 +117,43 @@ async def page(request: Request, slug: str):
     return response
 
 
+@app.get("/blog", response_class=HTMLResponse)
+async def blog_index(request: Request):
+    posts = load_all_posts()
+    return templates.TemplateResponse(request, "blog_index.html", {"posts": posts})
+
+
+@app.get("/blog/{slug}")
+async def blog_post(request: Request, slug: str):
+    post = load_post(slug)
+    if post is None:
+        return HTMLResponse("Not found", status_code=404)
+
+    link_header = _alt_link_header_blog(slug)
+    fmt = _wants_format(request, slug)
+
+    if fmt == "json":
+        return JSONResponse(
+            {k: v for k, v in post.items() if k != "content_html"},
+            headers={"Link": link_header, "Vary": "Accept, User-Agent"},
+        )
+    if fmt == "markdown":
+        body = f"# {post['title']}\n\n"
+        if post["summary"]:
+            body += f"> {post['summary']}\n\n"
+        body += post["content_md"]
+        return PlainTextResponse(
+            body,
+            media_type="text/markdown; charset=utf-8",
+            headers={"Link": link_header, "Vary": "Accept, User-Agent"},
+        )
+
+    response = templates.TemplateResponse(request, "blog_post.html", {"post": post})
+    response.headers["Link"] = link_header
+    response.headers["Vary"] = "Accept, User-Agent"
+    return response
+
+
 @app.get("/agents", response_class=HTMLResponse)
 async def agents_list(request: Request):
     agents = load_all_agents()
@@ -150,6 +195,31 @@ async def agent_page_md(slug: str):
     return PlainTextResponse(page["content_md"], media_type="text/markdown; charset=utf-8")
 
 
+@app.get("/agent/blog.json")
+async def agent_blog():
+    posts = load_all_posts()
+    return JSONResponse([
+        {k: v for k, v in p.items() if k != "content_html"}
+        for p in posts
+    ])
+
+
+@app.get("/agent/blog/{slug}.json")
+async def agent_blog_post_json(slug: str):
+    post = load_post(slug)
+    if post is None:
+        return JSONResponse({"error": "not found"}, status_code=404)
+    return JSONResponse({k: v for k, v in post.items() if k != "content_html"})
+
+
+@app.get("/agent/blog/{slug}.md")
+async def agent_blog_post_md(slug: str):
+    post = load_post(slug)
+    if post is None:
+        return PlainTextResponse("Not found", status_code=404)
+    return PlainTextResponse(post["content_md"], media_type="text/markdown; charset=utf-8")
+
+
 @app.get("/agent/agents.json")
 async def agent_agents():
     return JSONResponse(load_all_agents())
@@ -182,12 +252,17 @@ async def well_known_agent():
             "pages": "/agent/pages.json",
             "page": "/agent/page/{slug}.json",
             "page_md": "/agent/page/{slug}.md",
+            "blog": "/agent/blog.json",
+            "blog_post": "/agent/blog/{slug}.json",
+            "blog_post_md": "/agent/blog/{slug}.md",
             "agents": "/agent/agents.json",
             "agent": "/agent/agents/{name}.json",
         },
         "human_endpoints": {
             "home": "/",
             "page": "/page/{slug}",
+            "blog": "/blog",
+            "blog_post": "/blog/{slug}",
             "agents": "/agents",
             "agent": "/agents/{name}",
         },

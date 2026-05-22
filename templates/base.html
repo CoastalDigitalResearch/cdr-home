@@ -6,6 +6,7 @@
   <title>{% block title %}Coastal Digital Research{% endblock %}</title>
   <link rel="stylesheet" href="/static/app.css">
   <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
+  {% block extra_head %}{% endblock %}
 </head>
 <body>
   <header class="site-header">
@@ -17,6 +18,7 @@
         <li><a href="/page/research">Research</a></li>
         <li><a href="/page/workflows">Workflows</a></li>
         <li><a href="/page/policies">Policies</a></li>
+        <li><a href="/blog">Blog</a></li>
         <li><a href="/agents">Agents</a></li>
       </ul>
     </nav>

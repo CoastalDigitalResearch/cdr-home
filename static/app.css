@@ -301,6 +301,67 @@ a:hover { color: var(--accent-hover); }
 }
 .prose a:hover { border-bottom-style: solid; }
 
+/* Blog list */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.post-list-item {
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.15s;
+}
+.post-list-item:hover {
+  border-color: var(--accent);
+}
+.post-list-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.post-list-title a {
+  color: var(--text);
+}
+.post-list-title a:hover {
+  color: var(--accent-hover);
+}
+.post-list-meta {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  margin-bottom: 0.6rem;
+}
+.post-list-summary {
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+/* Blog post meta */
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  margin-bottom: 0.75rem;
+}
+
+/* Mermaid diagrams */
+.mermaid {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  text-align: center;
+}
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Format toggle */
 .format-toggle {
   margin-top: 1rem;
