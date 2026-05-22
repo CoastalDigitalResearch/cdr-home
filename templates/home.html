@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Coastal Digital Research{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1 class="hero-title">Coastal Digital Research</h1>
+  <p class="hero-tagline">Open infrastructure for AI systems. Built for humans and agents alike.</p>
+  <div class="hero-actions">
+    <a href="/page/mission" class="btn btn-primary">Our Mission</a>
+    <a href="/agents" class="btn btn-secondary">Agent Registry</a>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Pages</h2>
+  <div class="card-grid">
+    {% for page in pages %}
+    <a href="/page/{{ page.slug }}" class="card">
+      <h3 class="card-title">{{ page.title }}</h3>
+      {% if page.summary %}
+      <p class="card-summary">{{ page.summary }}</p>
+      {% endif %}
+      {% if page.tags %}
+      <div class="tag-list">
+        {% for tag in page.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <h2>Agent Registry</h2>
+  <p class="section-intro">Deployed AI agents available for programmatic discovery and integration.</p>
+  <div class="card-grid">
+    {% for agent in agents %}
+    <a href="/agents/{{ agent.name }}" class="card">
+      <h3 class="card-title">{{ agent.name }}</h3>
+      {% if agent.description %}
+      <p class="card-summary">{{ agent.description }}</p>
+      {% endif %}
+      {% if agent.runtime %}
+      <span class="tag">{{ agent.runtime }}</span>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section agent-discovery">
+  <h2>Machine-Readable Endpoints</h2>
+  <p>This site exposes structured data for AI agents alongside every human page.</p>
+  <ul class="endpoint-list">
+    <li><code>GET /.well-known/agent.json</code> &mdash; Agent discovery manifest</li>
+    <li><code>GET /agent/pages.json</code> &mdash; All content pages as JSON</li>
+    <li><code>GET /agent/page/{slug}.json</code> &mdash; Single page as JSON</li>
+    <li><code>GET /agent/page/{slug}.md</code> &mdash; Single page as Markdown</li>
+    <li><code>GET /agent/agents.json</code> &mdash; All agent manifests</li>
+    <li><code>GET /agent/agents/{name}.json</code> &mdash; Single agent manifest</li>
+  </ul>
+</section>
+{% endblock %}

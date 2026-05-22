@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}{{ agent.name }} &mdash; Coastal Digital Research{% endblock %}
+
+{% block content %}
+<article class="page-content">
+  <header class="page-header">
+    <h1>{{ agent.name }}</h1>
+    {% if agent.description %}
+    <p class="page-summary">{{ agent.description }}</p>
+    {% endif %}
+    <div class="tag-list">
+      {% if agent.runtime %}
+      <span class="tag">{{ agent.runtime }}</span>
+      {% endif %}
+      {% if agent.tags %}
+      {% for tag in agent.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+      {% endif %}
+    </div>
+    <div class="agent-links">
+      <a href="/agent/agents/{{ agent.name }}.json">JSON</a>
+    </div>
+  </header>
+
+  <dl class="manifest-table">
+    {% if agent.owner %}
+    <dt>Owner</dt>
+    <dd>{{ agent.owner }}</dd>
+    {% endif %}
+
+    {% if agent.entrypoint %}
+    <dt>Entrypoint</dt>
+    <dd><code>{{ agent.entrypoint }}</code></dd>
+    {% endif %}
+
+    {% if agent.runtime %}
+    <dt>Runtime</dt>
+    <dd>{{ agent.runtime }}</dd>
+    {% endif %}
+
+    {% if agent.models %}
+    <dt>Models</dt>
+    <dd>
+      <ul>
+        {% for m in agent.models %}
+        <li>{{ m }}</li>
+        {% endfor %}
+      </ul>
+    </dd>
+    {% endif %}
+
+    {% if agent.tools %}
+    <dt>Tools</dt>
+    <dd>
+      <ul>
+        {% for t in agent.tools %}
+        <li>{{ t }}</li>
+        {% endfor %}
+      </ul>
+    </dd>
+    {% endif %}
+
+    {% if agent.inputs %}
+    <dt>Inputs</dt>
+    <dd>
+      <ul>
+        {% for i in agent.inputs %}
+        <li>{{ i }}</li>
+        {% endfor %}
+      </ul>
+    </dd>
+    {% endif %}
+
+    {% if agent.outputs %}
+    <dt>Outputs</dt>
+    <dd>
+      <ul>
+        {% for o in agent.outputs %}
+        <li>{{ o }}</li>
+        {% endfor %}
+      </ul>
+    </dd>
+    {% endif %}
+
+    {% if agent.slo %}
+    <dt>SLO</dt>
+    <dd>{{ agent.slo }}</dd>
+    {% endif %}
+  </dl>
+</article>
+{% endblock %}

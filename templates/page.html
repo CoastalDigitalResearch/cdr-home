@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} &mdash; Coastal Digital Research{% endblock %}
+
+{% block content %}
+<article class="page-content">
+  <header class="page-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}
+    <p class="page-summary">{{ page.summary }}</p>
+    {% endif %}
+    {% if page.tags %}
+    <div class="tag-list">
+      {% for tag in page.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="agent-links">
+      <a href="/agent/page/{{ page.slug }}.json">JSON</a>
+      <a href="/agent/page/{{ page.slug }}.md">Markdown</a>
+    </div>
+  </header>
+  <div class="prose"
+       hx-get="/agent/page/{{ page.slug }}.md"
+       hx-trigger="load"
+       hx-target="this"
+       hx-swap="innerHTML">
+    <div class="prose-raw">{{ page.content_md }}</div>
+  </div>
+</article>
+{% endblock %}

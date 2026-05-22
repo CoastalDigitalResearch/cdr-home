@@ -1,0 +1,29 @@
+name: rlm-linux
+description: Remote Linux machine agent exposing a standardized interface for AI systems to operate on Linux hosts.
+owner: Coastal Digital Research
+entrypoint: rlm-linux serve
+runtime: python3.12
+models:
+  - claude-sonnet-4-6
+tools:
+  - sandboxed_bash
+  - file_read
+  - file_write
+  - process_list
+  - process_kill
+  - audit_log
+inputs:
+  - authorized command request (JSON)
+  - target host credentials (via environment)
+  - optional working directory
+outputs:
+  - command result (JSON)
+  - audit log entry
+  - process or file state snapshot
+slo: p99 < 10s for shell commands; p99 < 30s for file operations on large trees
+tags:
+  - agent
+  - linux
+  - remote
+  - infrastructure
+  - sandboxed

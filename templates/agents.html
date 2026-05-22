@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Agent Registry &mdash; Coastal Digital Research{% endblock %}
+
+{% block content %}
+<section class="page-content">
+  <header class="page-header">
+    <h1>Agent Registry</h1>
+    <p class="page-summary">Deployed AI agents operated by Coastal Digital Research.</p>
+    <div class="agent-links">
+      <a href="/agent/agents.json">JSON</a>
+    </div>
+  </header>
+
+  <div class="card-grid">
+    {% for agent in agents %}
+    <a href="/agents/{{ agent.name }}" class="card">
+      <h3 class="card-title">{{ agent.name }}</h3>
+      {% if agent.description %}
+      <p class="card-summary">{{ agent.description }}</p>
+      {% endif %}
+      <div class="tag-list">
+        {% if agent.runtime %}
+        <span class="tag">{{ agent.runtime }}</span>
+        {% endif %}
+        {% if agent.tags %}
+        {% for tag in agent.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

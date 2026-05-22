@@ -1,0 +1,30 @@
+name: mae
+description: Persistent AI agent for long-running development and operations tasks on Linux systems.
+owner: Coastal Digital Research
+entrypoint: mae
+runtime: python3.12
+models:
+  - claude-sonnet-4-6
+  - claude-opus-4-6
+tools:
+  - bash
+  - file_read
+  - file_write
+  - glob
+  - grep
+  - web_search
+inputs:
+  - task description (natural language)
+  - working directory path
+  - optional context files
+outputs:
+  - structured action log (JSON)
+  - modified files
+  - summary report (Markdown)
+slo: best-effort; no hard latency guarantees; designed for tasks taking seconds to hours
+tags:
+  - agent
+  - linux
+  - development
+  - operations
+  - persistent

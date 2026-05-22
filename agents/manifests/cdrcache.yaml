@@ -1,0 +1,25 @@
+name: cdrcache
+description: Content-addressed cache for AI agent outputs. Store and retrieve deterministic agent results by input hash.
+owner: Coastal Digital Research
+entrypoint: cdrcache serve
+runtime: python3.12
+models: []
+tools:
+  - content_hash
+  - local_store_read
+  - local_store_write
+inputs:
+  - cache key (SHA-256 of inputs)
+  - agent output (any serializable value)
+  - optional TTL (seconds)
+outputs:
+  - cached value (on hit)
+  - miss signal (on miss)
+  - store confirmation (on write)
+slo: p99 read < 5ms local; p99 write < 10ms local
+tags:
+  - cache
+  - storage
+  - content-addressed
+  - infrastructure
+  - deterministic

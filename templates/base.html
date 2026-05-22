@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Coastal Digital Research{% endblock %}</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <script src="https://unpkg.com/htmx.org@2.0.3" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a href="/" class="nav-brand">CDR</a>
+      <ul class="nav-links">
+        <li><a href="/page/mission">Mission</a></li>
+        <li><a href="/page/projects">Projects</a></li>
+        <li><a href="/page/research">Research</a></li>
+        <li><a href="/page/workflows">Workflows</a></li>
+        <li><a href="/page/policies">Policies</a></li>
+        <li><a href="/agents">Agents</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>Coastal Digital Research &mdash; Open infrastructure for AI systems.</p>
+      <p class="footer-links">
+        <a href="/.well-known/agent.json">agent.json</a>
+        &middot;
+        <a href="/agent/pages.json">pages.json</a>
+        &middot;
+        <a href="/agent/agents.json">agents.json</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
