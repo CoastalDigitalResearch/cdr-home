@@ -1,6 +1,6 @@
 ---
 title: Projects
-summary: Open-source repos I maintain under Coastal Digital Research.
+summary: Open-source repos we maintain under Coastal Digital Research.
 tags: [projects, open-source, repos]
 ---
 
@@ -8,7 +8,7 @@ tags: [projects, open-source, repos]
 
 ### mae
 
-A persistent agent for long-running tasks on Linux boxes. Keeps context across sessions, runs shell commands, reads and writes files, returns results in structured form. I use it daily for supervised dev and ops work.
+A persistent agent for long-running tasks on Linux boxes. Keeps context across sessions, runs shell commands, reads and writes files, returns results in structured form. We use it daily for supervised dev and ops work.
 
 Repository: github.com/coastal-digital-research/mae
 
@@ -32,7 +32,7 @@ Repository: github.com/coastal-digital-research/CDRcache
 
 ### CDRbrowser
 
-A browser automation agent that returns clean structured data instead of raw HTML. Built because most browser agents I tried gave back too much noise.
+A browser automation agent that returns clean structured data instead of raw HTML. Built because most browser agents we tried gave back too much noise.
 
 Repository: github.com/coastal-digital-research/CDRbrowser
 

@@ -6,11 +6,11 @@ tags: [policy, governance, open-source, data]
 
 ## Open Source Policy
 
-All CDR software is Apache License 2.0 unless explicitly noted. I picked Apache 2.0 because it's permissive (commercial use is fine), requires attribution, and includes an explicit patent grant.
+All CDR software is Apache License 2.0 unless explicitly noted. We picked Apache 2.0 because it's permissive (commercial use is fine), requires attribution, and includes an explicit patent grant.
 
 Contributors keep copyright on what they wrote. Opening a pull request means you're agreeing your work can be distributed under the project's license.
 
-I don't dual-license. I don't sell closed versions of the open-source tools.
+We don't dual-license. We don't sell closed versions of the open-source tools.
 
 ## Data Policy
 
@@ -22,15 +22,15 @@ CDRcache stores content hashes and agent outputs. No PII should ever go in there
 
 ## Governance Policy
 
-CDR is currently a sole proprietorship. I make the call on project direction, releases, and governance.
+Decisions on project direction, releases, and governance are made by the CDR maintainers.
 
-External contributions via pull request are welcome. Correctness, documentation, and test coverage improvements get prioritized. Anything that increases attack surface needs a security review before I'll merge it.
+External contributions via pull request are welcome. Correctness, documentation, and test coverage improvements get prioritized. Anything that increases attack surface needs a security review before we'll merge it.
 
-Security issues should go through GitHub's private vulnerability reporting on the affected repo. I aim to respond inside 72 hours.
+Security issues should go through GitHub's private vulnerability reporting on the affected repo. We aim to respond inside 72 hours.
 
 ## Agent Behavior Policy
 
-Agents I operate:
+Agents we operate:
 
 - Act only on tasks they were explicitly authorized to do
 - Log enough detail to reconstruct what happened

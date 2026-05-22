@@ -16,11 +16,11 @@ Small, asynchronous, mostly code-based. Almost no meetings. Communication happen
 
 **Tests before ship.** Nothing merges without tests passing. Infrastructure pieces get integration tests against realistic environments, not just unit tests.
 
-**Agents in the loop.** I use my own agents for the work I can hand off. mae does file edits and code searches. CDRbrowser handles web research. CDRcache memoizes intermediate steps in long pipelines.
+**Agents in the loop.** We use our own agents for the work we can hand off. mae does file edits and code searches. CDRbrowser handles web research. CDRcache memoizes intermediate steps in long pipelines.
 
 ## Release Workflow
 
-Semantic versioning. I cut a release when:
+Semantic versioning. We cut a release when:
 
 1. Tests pass on main.
 2. The changelog is current.
@@ -41,4 +41,4 @@ When an agent misbehaves or a service goes down:
 
 ## Communication
 
-GitHub issues and discussions on the relevant repo. No Slack, no Discord, no mailing list. If you need to reach me about a project, open an issue.
+GitHub issues and discussions on the relevant repo. No Slack, no Discord, no mailing list. If you need to reach us about a project, open an issue.
