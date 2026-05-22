@@ -1,37 +1,37 @@
 ---
 title: Research
-summary: Research focus areas at Coastal Digital Research.
+summary: What I'm thinking about and writing about.
 tags: [research, AI, infrastructure, agents]
 ---
 
 ## Research Focus
 
-Coastal Digital Research works at the intersection of AI systems and software infrastructure. Our research is applied: we study problems we encounter building and operating AI agents, and we publish what we learn.
+The work here is applied. I study the problems I hit while building and running agents, then I write up what I learn. Less paper-style research, more field notes.
 
 ## Agent Runtime Design
 
-How should AI agents be structured as software components? We study the tradeoffs between stateless agents (easier to reason about, easier to scale) and stateful agents (more capable for long-running tasks, harder to audit). Our agent manifests capture the key dimensions: entrypoint, runtime, tools, inputs, outputs, and SLOs.
+What's the right shape for an agent as a software component? Stateless agents are easier to reason about and easier to scale. Stateful agents do more interesting work but are harder to audit. The agent manifests on this site capture the dimensions I care about: entrypoint, runtime, tools, inputs, outputs, SLOs.
 
-We are particularly interested in how agents should handle failure — when to retry, when to escalate, when to halt and wait for human review.
+The piece I keep coming back to is failure handling. When does an agent retry, when does it escalate, when does it stop and wait for a human?
 
 ## Content-Addressed Agent Memory
 
-CDRcache explores using content-addressed storage for agent outputs. If an agent's output is a deterministic function of its inputs, that output can be cached and reused. This reduces compute cost and creates a stable audit trail: you can inspect exactly what an agent produced given a specific input at a specific time.
+CDRcache is the experiment here. If an agent's output is a deterministic function of its inputs, that output can be hashed and stored. You skip the rerun next time, and you get an audit trail for free.
 
-Open questions: how do you handle agents that are not fully deterministic? How do you invalidate cache entries when the underlying model or tool changes?
+Open questions: what to do about agents that aren't fully deterministic, and how to invalidate cache entries when the underlying model or tool moves.
 
 ## Dual-Mode Web Infrastructure
 
-Most web infrastructure is designed for human browsers. As AI agents increasingly browse the web programmatically, there is a mismatch: HTML is rich with navigation chrome, ads, and layout that agents do not need; JSON is clean for machines but unusable by humans without tooling.
+Most websites are designed for humans. Agents browsing those sites have to parse around navigation, ads, and layout to get to the content. The fix is to serve the same content twice in different shapes: HTML for people, JSON or Markdown for machines.
 
-We are exploring patterns for dual-mode endpoints — the same content served as HTML for humans and as JSON or Markdown for agents. This site is an early implementation. The /.well-known/agent.json convention is one approach to agent discovery.
+This site is the implementation I keep iterating on. The `/.well-known/agent.json` convention is one half of the story. Content negotiation is the other.
 
 ## Minimal Agent Footprint
 
-What is the smallest set of capabilities an agent needs to accomplish a given task? We study how to scope agent permissions tightly, how to detect when agents are operating outside their intended scope, and how to design agent interfaces that make over-privileged operation difficult by default.
+What's the smallest set of capabilities an agent needs to do its job? I'm interested in how to scope agent permissions tightly, how to spot when an agent is operating outside its scope, and how to design interfaces that make over-privileged behavior hard by default.
 
 ## Observability for AI Systems
 
-Standard observability tooling (logs, metrics, traces) was designed for deterministic software. AI agents introduce non-determinism, long context windows, and emergent behavior that does not fit neatly into these models.
+Logs, metrics, and traces were built for deterministic software. Agents are not deterministic. Context windows are large. Behavior is emergent. The usual tooling doesn't quite fit.
 
-We are studying how to adapt observability practices for AI systems: what should be logged, at what granularity, and how to structure that data for both human review and automated analysis.
+I'm working through what to log, at what granularity, and how to structure it so both a person reviewing an incident and another agent doing analysis can use it.

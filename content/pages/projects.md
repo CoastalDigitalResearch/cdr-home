@@ -1,6 +1,6 @@
 ---
 title: Projects
-summary: Open-source repositories maintained by Coastal Digital Research.
+summary: Open-source repos I maintain under Coastal Digital Research.
 tags: [projects, open-source, repos]
 ---
 
@@ -8,7 +8,7 @@ tags: [projects, open-source, repos]
 
 ### mae
 
-A persistent AI agent designed for long-running tasks on Linux systems. mae maintains context across sessions, executes shell commands, reads and writes files, and reports results in structured formats. Built for supervised automation of development and operations work.
+A persistent agent for long-running tasks on Linux boxes. Keeps context across sessions, runs shell commands, reads and writes files, returns results in structured form. I use it daily for supervised dev and ops work.
 
 Repository: github.com/coastal-digital-research/mae
 
@@ -16,7 +16,7 @@ Repository: github.com/coastal-digital-research/mae
 
 ### rlm-linux
 
-A remote Linux machine agent that exposes a standardized interface for AI systems to operate on Linux hosts. Provides sandboxed shell access, file system operations, process management, and audit logging. Designed to be embedded in larger agent pipelines.
+A remote Linux machine agent. Gives AI systems a standardized way to operate on a Linux host: sandboxed shell, file ops, process management, audit logs. Meant to be a building block inside bigger agent pipelines.
 
 Repository: github.com/coastal-digital-research/rlm-linux
 
@@ -24,7 +24,7 @@ Repository: github.com/coastal-digital-research/rlm-linux
 
 ### CDRcache
 
-A content-addressed cache for AI agent outputs. Agents that produce deterministic results given fixed inputs can store and retrieve those results from CDRcache, reducing redundant computation and providing a stable record of what was produced and when.
+Content-addressed cache for agent outputs. If an agent produces the same result for the same input, you should only have to run it once. CDRcache stores those outputs by hash and gives you back a stable record of what was produced and when.
 
 Repository: github.com/coastal-digital-research/CDRcache
 
@@ -32,7 +32,7 @@ Repository: github.com/coastal-digital-research/CDRcache
 
 ### CDRbrowser
 
-A browser automation agent built for AI systems. CDRbrowser exposes a structured API for navigating pages, extracting content, and interacting with web interfaces in a way that produces clean, structured output rather than raw HTML.
+A browser automation agent that returns clean structured data instead of raw HTML. Built because most browser agents I tried gave back too much noise.
 
 Repository: github.com/coastal-digital-research/CDRbrowser
 
@@ -40,7 +40,7 @@ Repository: github.com/coastal-digital-research/CDRbrowser
 
 ### CDRdistill
 
-A document processing agent that converts raw web and file content into clean, structured Markdown and JSON. Designed to serve as a preprocessing stage for retrieval pipelines and knowledge bases.
+Turns messy web pages and files into clean Markdown and JSON. Sits in front of retrieval pipelines and knowledge bases so they get usable input instead of soup.
 
 Repository: github.com/coastal-digital-research/CDRdistill
 
@@ -48,7 +48,7 @@ Repository: github.com/coastal-digital-research/CDRdistill
 
 ### CDRmem
 
-A vector memory store for AI agents. CDRmem provides a lightweight, local-first embedding and retrieval layer that agents can use to store facts, retrieve context, and build persistent knowledge across sessions.
+A small vector memory store for agents. Local-first, no extra services to run. Agents use it to remember facts and pull context across sessions.
 
 Repository: github.com/coastal-digital-research/CDRmem
 
@@ -56,6 +56,6 @@ Repository: github.com/coastal-digital-research/CDRmem
 
 ### cdr-home
 
-This site. A FastAPI application serving both human-readable HTML and machine-readable JSON/Markdown endpoints for the same content, demonstrating dual-mode design for AI-accessible web infrastructure.
+This site. A FastAPI app that serves the same content as HTML for humans and as JSON or Markdown for agents. Reference implementation for the dual-mode approach.
 
 Repository: github.com/coastal-digital-research/cdr-home

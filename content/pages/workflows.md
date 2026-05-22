@@ -1,44 +1,44 @@
 ---
 title: Workflows
-summary: How Coastal Digital Research operates day to day.
+summary: How CDR actually runs.
 tags: [workflows, operations, process]
 ---
 
 ## How CDR Works
 
-Coastal Digital Research operates as a small, asynchronous organization. Most work happens through code, documentation, and structured agent tasks rather than meetings or synchronous communication.
+Small, asynchronous, mostly code-based. Almost no meetings. Communication happens in repos and in the agent task logs.
 
 ## Development Workflow
 
-**Trunk-based development.** All repositories use a single main branch. Features are developed in short-lived branches and merged via pull request after review. Long-running feature branches are avoided.
+**Trunk-based.** One main branch per repo. Short-lived feature branches. No long-lived branches.
 
-**Commit hygiene.** Every commit should represent a coherent unit of change with a message that explains why the change was made. Commits that fix typos, apply formatting, or change whitespace are squashed before merge.
+**Commit hygiene.** Each commit should be one coherent change with a message that says why. Typos and formatting get squashed before merge.
 
-**Testing before shipping.** Nothing merges without passing automated tests. For infrastructure components, tests include integration tests against realistic environments, not only unit tests.
+**Tests before ship.** Nothing merges without tests passing. Infrastructure pieces get integration tests against realistic environments, not just unit tests.
 
-**Agent-assisted development.** CDR uses its own agents for development tasks where appropriate. mae handles file operations, code searches, and structured edits. CDRbrowser is used for web research tasks. CDRcache is used to store and retrieve intermediate results in multi-step pipelines.
+**Agents in the loop.** I use my own agents for the work I can hand off. mae does file edits and code searches. CDRbrowser handles web research. CDRcache memoizes intermediate steps in long pipelines.
 
 ## Release Workflow
 
-Projects follow semantic versioning. A release is cut when:
+Semantic versioning. I cut a release when:
 
-1. All tests pass on the main branch.
-2. The changelog is up to date.
+1. Tests pass on main.
+2. The changelog is current.
 3. The container image builds cleanly.
-4. The agent manifest (if applicable) has been updated to reflect the new version.
+4. The agent manifest, if there is one, reflects the new version.
 
-Releases are tagged in git and published as container images where appropriate.
+Releases are tagged in git and published as container images where it makes sense.
 
 ## Incident Workflow
 
-If an agent misbehaves or a service goes down:
+When an agent misbehaves or a service goes down:
 
-1. Identify the scope: what was affected, for how long, and what data or operations are at risk.
-2. Contain: disable the agent, roll back to the last known good state.
-3. Review logs to reconstruct what happened.
-4. Write a brief incident report in the repository's incident log.
-5. Fix the root cause before re-enabling the affected system.
+1. Figure out the blast radius. What was affected, for how long, what's at risk.
+2. Contain it. Disable the agent. Roll back to the last known good state.
+3. Read the logs and reconstruct what happened.
+4. Write a short incident note in the repo's incident log.
+5. Fix the root cause before turning anything back on.
 
 ## Communication
 
-External communication happens via GitHub issues and discussions on the relevant repository. There is no Slack, Discord, or mailing list. If you need to reach CDR about a project, open an issue.
+GitHub issues and discussions on the relevant repo. No Slack, no Discord, no mailing list. If you need to reach me about a project, open an issue.

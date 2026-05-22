@@ -1,29 +1,29 @@
 ---
 title: Mission
-summary: Why Coastal Digital Research exists and what we are working toward.
+summary: Why I started Coastal Digital Research and what I'm working on.
 tags: [mission, values, vision]
 ---
 
 ## Mission
 
-Coastal Digital Research builds open-source infrastructure for AI systems. We design tools, agents, and protocols that make AI capable of acting reliably in the world — reading files, managing systems, caching results, and coordinating work across environments.
+I build open-source infrastructure for AI agents. Tools, runtimes, protocols. The stuff that runs underneath the model.
 
-We believe the most important software being written today is the infrastructure that AI agents run on. Our work focuses on making that infrastructure correct, auditable, and accessible.
+This is where most of the interesting work is right now. Agents need to read files, run commands, cache results, remember things between sessions, and stay within scope. Each of those is a real engineering problem with real consequences when it goes wrong. I'd rather get those right than ship another model wrapper.
 
 ## Vision
 
-A world where AI agents are first-class infrastructure components: deployed with the same rigor as databases, observed with the same depth as production services, and governed with the same accountability as software that touches real data and real decisions.
+Agents deployed with the same care we apply to databases. Observed like production services. Governed like software that touches real money. Most agent infrastructure today is closer to a demo than a system. I want to fix that.
 
 ## Values
 
-**Openness.** Our work is public. Code, manifests, and agent behavior are visible by default. We operate on the principle that transparency is the foundation of trust in AI systems.
+**Open by default.** Code is public. Manifests are public. Agent behavior is inspectable. If you can't see how something works, you can't trust it.
 
-**Correctness over speed.** We prefer shipping fewer things that work well over shipping many things quickly. AI infrastructure that misbehaves is not a minor bug — it is a governance failure.
+**Correctness over speed.** I'd rather ship one thing that works than five that mostly work. AI infrastructure that misbehaves isn't a bug. It's a governance failure.
 
-**Human legibility.** Every system we build must be understandable to the humans who depend on it. Agent behavior should be inspectable. Logs should be readable. APIs should be documentable in plain language.
+**Human legibility.** Logs should read like English. APIs should explain themselves. A system a person can't audit doesn't deserve to run unattended.
 
-**Minimal footprint.** We do not build what we do not need. Agents operate with scoped permissions and bounded authority. Infrastructure is as small as the task requires.
+**Minimal footprint.** Agents get the smallest set of permissions and tools that get the job done. Anything more is a future incident waiting.
 
-## What We Are Not
+## What I Don't Do
 
-We are not a model lab. We do not train foundation models. We build the layer above: the runtime, the memory, the tooling, and the protocols that let models act in the world safely and repeatably.
+I don't train foundation models. I don't sell hosted inference. I work on the layer above. The runtime, the memory, the tooling, and the protocols that let models do useful work without breaking things.

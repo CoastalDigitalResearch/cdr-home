@@ -27,7 +27,7 @@ _LLM_BOT_PATTERNS = re.compile(
     re.IGNORECASE,
 )
 
-# Search-engine indexers — they want the same HTML humans see (so ranking is accurate).
+# Search-engine indexers. They want the same HTML humans see, so ranking is accurate.
 _SEARCH_BOT_PATTERNS = re.compile(
     r"Googlebot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|Sogou|Exabot|"
     r"facebookexternalhit|Twitterbot|LinkedInBot|Discordbot|Slackbot",
