@@ -1,7 +1,18 @@
 from pathlib import Path
 import frontmatter
+import markdown
 
 PAGES_DIR = Path(__file__).parent.parent / "content" / "pages"
+
+_md = markdown.Markdown(
+    extensions=["fenced_code", "tables", "toc", "sane_lists", "smarty"],
+    output_format="html5",
+)
+
+
+def _render(md_text: str) -> str:
+    _md.reset()
+    return _md.convert(md_text)
 
 
 def load_page(slug: str) -> dict | None:
@@ -15,6 +26,7 @@ def load_page(slug: str) -> dict | None:
         "summary": post.metadata.get("summary", ""),
         "tags": post.metadata.get("tags", []),
         "content_md": post.content,
+        "content_html": _render(post.content),
     }
 
 

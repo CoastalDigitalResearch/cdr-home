@@ -16,17 +16,15 @@
       {% endfor %}
     </div>
     {% endif %}
-    <div class="agent-links">
-      <a href="/agent/page/{{ page.slug }}.json">JSON</a>
+    <div class="format-toggle" aria-label="View this page as">
+      <span class="format-toggle-label">View as:</span>
+      <a href="/page/{{ page.slug }}" class="format-toggle-current" aria-current="page">HTML</a>
       <a href="/agent/page/{{ page.slug }}.md">Markdown</a>
+      <a href="/agent/page/{{ page.slug }}.json">JSON</a>
     </div>
   </header>
-  <div class="prose"
-       hx-get="/agent/page/{{ page.slug }}.md"
-       hx-trigger="load"
-       hx-target="this"
-       hx-swap="innerHTML">
-    <div class="prose-raw">{{ page.content_md }}</div>
+  <div class="prose">
+    {{ page.content_html | safe }}
   </div>
 </article>
 {% endblock %}
