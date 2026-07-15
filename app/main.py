@@ -1,3 +1,4 @@
+import hashlib
 import re
 from pathlib import Path
 
@@ -15,6 +16,22 @@ BASE_DIR = Path(__file__).parent.parent
 app = FastAPI(title="Coastal Digital Research")
 app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
+
+
+def _static_version() -> str:
+    """Short hash of app.css, used to cache-bust the stylesheet URL.
+
+    The linked URL changes whenever the CSS changes, so browsers holding a
+    stale copy of the unversioned /static/app.css are forced to refetch.
+    """
+    try:
+        return hashlib.sha1((BASE_DIR / "static" / "app.css").read_bytes()).hexdigest()[:8]
+    except OSError:
+        return "dev"
+
+
+# Exposed to every template as {{ static_version }} without per-route context.
+templates.env.globals["static_version"] = _static_version()
 
 
 # --- Content negotiation helpers ---
