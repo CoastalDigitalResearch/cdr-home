@@ -25,8 +25,8 @@ It's early. Development status is alpha, with training runs completed at 25M, 10
 
 Arboris is a second model from Adam Pippert, still in development. It's a graph-based, dendritic model built as an alternative to conventional world models: a different bet on how a model should represent and predict its environment. Where SGJM is aimed at faster inference, Arboris is aimed at the representation itself.
 
-- **Code and data**: [github.com/AdamPippert/Arboris](https://github.com/AdamPippert) *(confirm repo URL)*
-- **Trained models**: released by CDR on our HuggingFace org once training begins
+- **Code and data**: [github.com/AdamPippert/Arboris](https://github.com/AdamPippert/Arboris)
+- **Trained models**: [huggingface.co/CoastalDigitalResearch/Arboris](https://huggingface.co/CoastalDigitalResearch/Arboris) (architecture preview; weights once training begins)
 
 ## The Exchange
 
