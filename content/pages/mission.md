@@ -26,6 +26,8 @@ Agents deployed with the same care we apply to databases. We should be able to s
 
 ## What We Don't Do
 
-We don't train foundation models. We don't sell hosted inference. We work on the layer above, which is the runtime, the memory, and the protocols that let models actually do useful work without breaking things.
+We don't train our own foundation models. We don't sell hosted inference. We work on the layer above, which is the runtime, the memory, and the protocols that let models actually do useful work without breaking things.
+
+The one exception is our partnership program, where we train and publish models designed by outside researchers. The pipeline is ours, the models are theirs. That's infrastructure work too, just pointed at someone else's architecture instead of our own.
 
 Agents aren't chatbots. They're infrastructure. We want to build them like infrastructure.
